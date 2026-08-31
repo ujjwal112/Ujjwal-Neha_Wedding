@@ -35,6 +35,14 @@ const allRituals = [
       "In a Bihari house the tilak is not a courtesy visit. The bride’s people come to the groom’s home with a thali of chandan, roli, and rice. They apply the mark to his forehead, present clothes, coconut, and sweets, and the two families sit as one. After this evening, the wedding has begun.",
   },
   {
+    title: "Matkor",
+    sanskrit: "मटकोर",
+    phase: "Before",
+    image: BASE + "assets/ritual-matkor.webp",
+    meaning:
+      "The women of the house walk to a pond or the nearest earth with a soop, sindoor, and song. They fetch auspicious clay for the madwa. Without this soil the mandap does not stand.",
+  },
+  {
     title: "Madwa",
     sanskrit: "मड़वा",
     phase: "Before",
@@ -144,23 +152,25 @@ tick();
 setInterval(tick, 1000);
 
 const envelope = document.getElementById("envelope");
-const envBox = envelope.querySelector(".env");
+const envBox = envelope && envelope.querySelector(".env");
 const seal = document.getElementById("seal");
 let opened = false;
 
 function openEnvelope() {
-  if (opened) return;
+  if (opened || !envelope || !envBox) return;
   opened = true;
   envBox.classList.add("env-open");
   envelope.classList.add("env-out");
   document.body.style.overflow = "";
-  setTimeout(() => envelope.remove(), 1500);
+  setTimeout(() => {
+    if (envelope.parentNode) envelope.remove();
+  }, 1500);
 }
 
 document.body.style.overflow = "hidden";
-["click", "pointerup", "touchend"].forEach((evt) => {
+if (seal) {
   seal.addEventListener(
-    evt,
+    "click",
     (e) => {
       e.preventDefault();
       e.stopPropagation();
@@ -168,7 +178,7 @@ document.body.style.overflow = "hidden";
     },
     { passive: false },
   );
-});
+}
 
 const menuBtn = document.getElementById("menu-btn");
 const navMob = document.getElementById("nav-mob");
