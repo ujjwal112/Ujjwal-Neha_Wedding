@@ -234,3 +234,31 @@ document.getElementById("rite-next").addEventListener("click", (e) => {
   riteIndex = riteIndex === rituals.length - 1 ? 0 : riteIndex + 1;
   renderRite();
 });
+
+const days = [
+  { title: "Close", image: BASE + "assets/memory-close.webp", alt: "Neha smiling, held close" },
+  { title: "The bridge", image: BASE + "assets/memory-bridge.webp", alt: "Ujjwal and Neha on the bridge" },
+  { title: "In the wind", image: BASE + "assets/memory-wind.webp", alt: "Neha’s dress in the wind on the bridge" },
+  { title: "The river", image: BASE + "assets/memory-hands.webp", alt: "Ujjwal and Neha letting sand fall between their hands" },
+  { title: "The waterfall", image: BASE + "assets/memory-falls.webp", alt: "Ujjwal and Neha at the waterfall" },
+  { title: "That evening", image: BASE + "assets/memory-dinner.webp", alt: "Ujjwal kissing Neha’s hand at dinner" },
+];
+let dayIndex = 0;
+function renderDay() {
+  const d = days[dayIndex];
+  const img = document.getElementById("day-img");
+  img.src = d.image;
+  img.alt = d.alt;
+  document.getElementById("day-count").textContent = dayIndex + 1 + " / " + days.length;
+}
+renderDay();
+document.getElementById("day-prev").addEventListener("click", (e) => {
+  e.preventDefault();
+  dayIndex = dayIndex === 0 ? days.length - 1 : dayIndex - 1;
+  renderDay();
+});
+document.getElementById("day-next").addEventListener("click", (e) => {
+  e.preventDefault();
+  dayIndex = dayIndex === days.length - 1 ? 0 : dayIndex + 1;
+  renderDay();
+});

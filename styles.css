@@ -205,9 +205,37 @@ blockquote { margin: 2rem 0 0; padding-left: 1rem; border-left: 2px solid var(--
 blockquote .deva { font-size: 1.1rem; }
 blockquote .soft { margin-top: 0.25rem; font-size: 0.9rem; }
 
-#rites h2, #events h2, #contact h2 { margin-top: 0.5rem; font-size: 2.25rem; }
-@media (min-width: 640px) { #rites h2, #events h2, #contact h2 { font-size: 3rem; } }
-#rites .lead.center, #contact .lead.center { max-width: 36rem; margin-left: auto; margin-right: auto; }
+#days h2, #rites h2, #events h2, #contact h2 { margin-top: 0.5rem; font-size: 2.25rem; }
+@media (min-width: 640px) { #days h2, #rites h2, #events h2, #contact h2 { font-size: 3rem; } }
+#days .lead.center, #rites .lead.center, #contact .lead.center { max-width: 36rem; margin-left: auto; margin-right: auto; }
+.couple-split {
+  display: grid;
+  gap: 1.75rem;
+  max-width: 64rem;
+  margin: 2rem auto 0;
+  align-items: center;
+}
+@media (min-width: 800px) { .couple-split { grid-template-columns: 0.9fr 1.1fr; gap: 3rem; } }
+.day-card { max-width: none; margin: 0; }
+.rite-card.day-card { max-width: 30rem; margin: 0 auto; }
+@media (min-width: 800px) { .rite-card.day-card { max-width: none; margin: 0; } }
+.day-card .rite-media img { aspect-ratio: 1 / 1; }
+.day-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.7rem 0.75rem 0.65rem;
+}
+.couple-bios { display: grid; gap: 2rem; }
+.couple-bios h3 { margin-top: 0.25rem; }
+.couple-bios .lead { margin-top: 0.75rem; }
+.couple-us {
+  max-width: 40rem;
+  margin: 2.5rem auto 0;
+  text-align: center;
+}
+.couple-us h3 { font-size: 2rem; }
+.couple-us .lead { margin-top: 0.9rem; }
 
 .rite-card {
   display: flex;
@@ -260,6 +288,22 @@ blockquote .soft { margin-top: 0.25rem; font-size: 0.9rem; }
 }
 .rite-arrow svg { width: 1.35rem; height: 1.35rem; }
 .rite-nav .count { margin: 0; min-width: 3.5rem; text-align: center; font-size: 0.9rem; font-variant-numeric: tabular-nums; color: var(--ink-soft); }
+
+.rite-card.rite-split { max-width: 64rem; }
+@media (min-width: 800px) {
+  .rite-card.rite-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: stretch;
+  }
+  .rite-split .rite-media { min-height: 100%; }
+  .rite-split .rite-media img {
+    height: 100%;
+    min-height: 24rem;
+    aspect-ratio: auto;
+  }
+  .rite-split .rite-body { min-height: 24rem; }
+}
 
 .event-grid { display: grid; gap: 1.5rem; max-width: 64rem; margin: 3rem auto 0; }
 @media (min-width: 768px) { .event-grid { grid-template-columns: 1fr 1fr; } }
